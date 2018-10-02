@@ -3,6 +3,8 @@
 
 **A Flutter application.**
 
+Before cloning the project, you should have your Flutter environment set up and working. The Flutter installation instructions are excellent and very complete, and you should follow those to get the environment ready. You can find the instructions here: [https://flutter.io/get-started/install/] (https://flutter.io/get-started/install/)
+
 Clone project into your development directory:
 
 `git clone git@github.com:Givdo/givdo_app.git`.
@@ -29,11 +31,11 @@ You will now be shown the frameworks detected by Android Studio for the project.
 
 The project should load, and you should get a notice prompting you to run 'flutter packages get.' Accept and run it. This will run the tool to get any necessary Flutter dependencies.
 
-You may also get a warning that says the project does not use Gradle and asking if you want to convert it to a Gradle project. Decline.
+You may also get a warning that says the project does not use Gradle and asking if you want to convert it to a Gradle project. Decline this for now (we may change it later).
 
 The project should now be set up and ready. You can now it in the iOS Simulator (on Mac) or an Android emulator. To install an Android emulator image, go to Tools > AVD Manager and follow the prompts to simulate the device you want.
 
-That's it! If you have any issues, please speak to the team.
+That's it! If you have any issues, please speak with the team.
 
 
 
