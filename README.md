@@ -9,7 +9,7 @@ When your setup is complete, clone the project into your development directory:
 
 `git clone git@github.com:Givdo/givdo_app.git`.
 
-(Or use http if you do not have SSH set up)
+(Or use http if you do not have SSH set up.)
 
 If you want to use Android Studio, import the project by choosing "Import Project" from the welcome menu.
 
@@ -31,7 +31,7 @@ You will now be shown the frameworks detected by Android Studio for the project.
 
 The project should load, and you should get a notice prompting you to run 'flutter packages get.' Accept and run it. This will run the tool to get any necessary Flutter dependencies.
 
-You may also get a warning that says the project does not use Gradle and asking if you want to convert it to a Gradle project. Decline this for now (we may change it later).
+You may also get a warning that says the project does not use Gradle and asks if you want to convert it to a Gradle project. Decline this for now (we may change it later).
 
 The project should now be set up and ready. You can now it in the iOS Simulator (on Mac) or an Android emulator. To install an Android emulator image, go to Tools > AVD Manager and follow the prompts to simulate the device you want.
 
