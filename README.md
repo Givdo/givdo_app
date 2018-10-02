@@ -3,7 +3,7 @@
 
 **A Flutter application.**
 
-Before cloning the project, you should have your Flutter environment set up and working. The Flutter installation instructions are excellent and very complete, and you should follow those to get the environment ready. You can find the instructions here: [https://flutter.io/get-started/install/] (https://flutter.io/get-started/install/)
+Before cloning the project, you should have your Flutter environment set up and working. The Flutter installation instructions are excellent and very complete, and you should follow those to get the environment ready. You can find the instructions here: https://flutter.io/get-started/install/
 
 Clone project into your development directory:
 
