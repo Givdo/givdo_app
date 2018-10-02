@@ -5,7 +5,7 @@
 
 Before cloning the project, you should have your Flutter environment set up and working. The Flutter installation instructions are excellent and very complete, and you should follow those to get the environment ready. You can find the instructions here: https://flutter.io/get-started/install/
 
-When your setup is complete, clone project into your development directory:
+When your setup is complete, clone the project into your development directory:
 
 `git clone git@github.com:Givdo/givdo_app.git`.
 
