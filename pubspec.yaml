@@ -41,6 +41,9 @@ flutter:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
+  assets:
+    - images/g-orange-icon_1024px-01.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
@@ -66,3 +69,18 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
+
+  fonts:
+    - family: Catamaran
+      fonts:
+        - asset:  fonts/Catamaran-Regular.ttf
+        - asset:  fonts/Catamaran-SemiBold.ttf
+          weight: 400
+        - asset:  fonts/Catamaran-Bold.ttf
+          weight: 700
+        - asset:  fonts/Catamaran-ExtraBold.ttf
+          weight: 900
+        - asset:  fonts/Catamaran-Light.ttf
+          weight: 200
+        - asset:  fonts/Catamaran-ExtraLight.ttf
+          weight: 100
