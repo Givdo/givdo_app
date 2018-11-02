@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:givdo_app/definitions.dart';
+import 'package:givdo_app/logingivdobutton.dart';
 
-import 'dart:math';
+import 'package:givdo_app/logingivdologo.dart';
 
 class GivdoLoginPage extends StatefulWidget {
   @override
@@ -54,72 +55,26 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 _buildCustomExpanded(1),
-                _displayLogoLoginPage(),
+                DisplayGivdoLogo(logoSize: 70.0),
                 _buildCustomExpanded(1),
                 _displayAppTitleLoginPage(),
                 _buildCustomExpanded(3),
-                _displayButtonLoginPage(
-                    'w Facebook', facebook_blue, _signUpFacebook),
+                LoginGivdoButton(
+                  textButton: 'w Facebook',
+                  colorButton: facebook_blue,
+                  functionButton: _signUpFacebook,
+                ),
                 _buildCustomExpanded(5),
                 Form(
                     key: _formKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        TextFormField(
-                          style: TextStyle(color: givdo_orange, fontSize: 17.0),
-                          initialValue: '',
-                          scrollPadding: EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 10.0),
-                          autocorrect: false,
-                          decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  borderSide: BorderSide(
-                                    color: givdo_orange,
-                                  )),
-                              fillColor: givdo_orange,
-                              labelText: 'Email',
-                              labelStyle: TextStyle(
-                                  color: givdo_orange, fontSize: 17.0),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  borderSide: BorderSide(
-                                    width: 20.0,
-                                    color: givdo_orange,
-                                  ))),
-                          validator: (str) =>
-                              !str.contains('@') ? 'Not a valid Email!' : null,
-                          onSaved: (str) => _userEmail = str,
-                        ),
+                        _buildEmailTextFormField(),
                         Container(
                           height: 10.0,
                         ),
-                        TextFormField(
-                          style: TextStyle(color: givdo_orange, fontSize: 17.0),
-                          initialValue: '',
-                          autocorrect: false,
-                          decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  borderSide: BorderSide(
-                                    color: givdo_orange,
-                                  )),
-                              fillColor: givdo_orange,
-                              labelText: 'Password',
-                              labelStyle: TextStyle(
-                                  color: givdo_orange, fontSize: 17.0),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  borderSide: BorderSide(
-                                    color: givdo_orange,
-                                  ))),
-                          validator: (str) => str.length <= 7
-                              ? 'Password must be at least 7 characters'
-                              : null,
-                          onSaved: (str) => _userPassword = str,
-                          obscureText: true,
-                        ),
+                        _buildPasswordTextFormField(),
                       ],
                     )),
                 Row(
@@ -143,13 +98,20 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
                   ],
                 ),
                 _buildCustomExpanded(1),
-                _displayButtonLoginPage('SIGN UP', givdo_orange, _signUpGivdo),
-                _buildCustomExpanded(1),
-                Text(
-                  'I have an account',
-                  style: TextStyle(
-                      color: givdo_orange, fontWeight: FontWeight.w800),
+                LoginGivdoButton(
+                  textButton: 'SIGN UP',
+                  colorButton: givdo_orange,
+                  functionButton: _signUpGivdo,
                 ),
+                _buildCustomExpanded(1),
+                FlatButton(
+                    textColor: givdo_orange,
+                    splashColor: givdo_orange,
+                    highlightColor: Colors.white,
+                    onPressed: () {}, //TODO: Push Sign In Page
+                    child: Text('I have an acoount',
+                        style: TextStyle(
+                            color: givdo_orange, fontWeight: FontWeight.w800)))
               ],
             ),
           )
@@ -158,11 +120,56 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
     );
   }
 
-  Container _displayLogoLoginPage() {
-    return Container(
-        height: 70.0,
-        width: 70.0,
-        child: Image.asset('images/g-orange-icon_1024px-01.png'));
+  TextFormField _buildPasswordTextFormField() {
+    return TextFormField(
+      style: TextStyle(color: givdo_orange, fontSize: 17.0),
+      initialValue: '',
+      autocorrect: false,
+      decoration: InputDecoration(
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.0),
+              borderSide: BorderSide(
+                color: givdo_orange,
+              )),
+          fillColor: givdo_orange,
+          labelText: 'Password',
+          labelStyle: TextStyle(color: givdo_orange, fontSize: 17.0),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.0),
+              borderSide: BorderSide(
+                color: givdo_orange,
+              ))),
+      validator: (str) =>
+          str.length <= 7 ? 'Password must be at least 7 characters' : null,
+      onSaved: (str) => _userPassword = str,
+      obscureText: true,
+    );
+  }
+
+  TextFormField _buildEmailTextFormField() {
+    return TextFormField(
+      style: TextStyle(color: givdo_orange, fontSize: 17.0),
+      initialValue: '',
+      scrollPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      autocorrect: false,
+      decoration: InputDecoration(
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.0),
+              borderSide: BorderSide(
+                color: givdo_orange,
+              )),
+          fillColor: givdo_orange,
+          labelText: 'Email',
+          labelStyle: TextStyle(color: givdo_orange, fontSize: 17.0),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.0),
+              borderSide: BorderSide(
+                width: 20.0,
+                color: givdo_orange,
+              ))),
+      validator: (str) => !str.contains('@') ? 'Not a valid Email!' : null,
+      onSaved: (str) => _userEmail = str,
+    );
   }
 
   Text _displayAppTitleLoginPage() {
@@ -173,31 +180,6 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
         fontWeight: FontWeight.w900,
         color: givdo_orange,
       ),
-    );
-  }
-
-  ConstrainedBox _displayButtonLoginPage(
-      String textButton, Color colorButton, Function functionButton) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(minWidth: double.infinity),
-      child: RaisedButton(
-          color: colorButton,
-          elevation: 1.0,
-          onPressed: functionButton,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 14.0),
-            child: Text(
-              textButton,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 17.0,
-                fontWeight: FontWeight.w800,
-                letterSpacing: 0.5,
-              ),
-            ),
-          )),
     );
   }
 }

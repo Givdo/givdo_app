@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:givdo_app/login.dart';
+import 'package:givdo_app/logingivdologo.dart';
 import 'definitions.dart';
 
 void main() {
@@ -73,7 +74,7 @@ class MyHomePageState extends State<MyHomePage>
             _buildCustomExpanded(3),
             _displayAppTitleMainPage(),
             _buildCustomExpanded(1),
-            _displayLogoMainPage(),
+            DisplayGivdoLogo(logoSize: 120.0),
             _buildCustomExpanded(6),
           ],
         ),
@@ -94,12 +95,5 @@ class MyHomePageState extends State<MyHomePage>
       style:
           TextStyle(fontSize: 70.0, color: givdo_orange, letterSpacing: -1.0),
     );
-  }
-
-  Container _displayLogoMainPage() {
-    return Container(
-        height: 170.0,
-        width: 170.0,
-        child: Image.asset('images/g-orange-icon_1024px-01.png'));
   }
 }
