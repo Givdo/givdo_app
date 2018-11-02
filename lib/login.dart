@@ -3,6 +3,7 @@ import 'package:givdo_app/definitions.dart';
 import 'package:givdo_app/logingivdobutton.dart';
 
 import 'package:givdo_app/logingivdologo.dart';
+import 'package:givdo_app/logingivdotitle.dart';
 
 class GivdoLoginPage extends StatefulWidget {
   @override
@@ -44,20 +45,22 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: ListView(controller: _scroll, children: <Widget>[
           Container(
             height: MediaQuery.of(context).size.height >
                     MediaQuery.of(context).size.width
-                ? MediaQuery.of(context).size.height - 48.0
-                : MediaQuery.of(context).size.width - 48.0,
+                ? MediaQuery.of(context).size.height - 20.0
+                : MediaQuery.of(context).size.width - 20.0,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                _buildCustomExpanded(1),
+                _buildCustomExpanded(2),
                 DisplayGivdoLogo(logoSize: 70.0),
                 _buildCustomExpanded(1),
-                _displayAppTitleLoginPage(),
+                DisplayGivdoTitle(
+                  title: 'SIGN UP',
+                ),
                 _buildCustomExpanded(3),
                 LoginGivdoButton(
                   textButton: 'w Facebook',
@@ -103,13 +106,14 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
                   colorButton: givdo_orange,
                   functionButton: _signUpGivdo,
                 ),
-                _buildCustomExpanded(1),
                 FlatButton(
                     textColor: givdo_orange,
                     splashColor: givdo_orange,
                     highlightColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
                     onPressed: () {}, //TODO: Push Sign In Page
-                    child: Text('I have an acoount',
+                    child: Text('I have an account',
                         style: TextStyle(
                             color: givdo_orange, fontWeight: FontWeight.w800)))
               ],
@@ -169,17 +173,6 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
               ))),
       validator: (str) => !str.contains('@') ? 'Not a valid Email!' : null,
       onSaved: (str) => _userEmail = str,
-    );
-  }
-
-  Text _displayAppTitleLoginPage() {
-    return Text(
-      'SIGN UP',
-      style: TextStyle(
-        fontSize: 20.0,
-        fontWeight: FontWeight.w900,
-        color: givdo_orange,
-      ),
     );
   }
 }
