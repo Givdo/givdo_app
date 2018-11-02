@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:givdo_app/definitions.dart';
 
+import 'dart:math';
+
 class GivdoLoginPage extends StatefulWidget {
   @override
   _GivdoLoginPageState createState() => _GivdoLoginPageState();
@@ -44,7 +46,10 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
         padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 8.0),
         child: ListView(controller: _scroll, children: <Widget>[
           Container(
-            height: MediaQuery.of(context).size.height - 50.0,
+            height: MediaQuery.of(context).size.height >
+                    MediaQuery.of(context).size.width
+                ? MediaQuery.of(context).size.height - 48.0
+                : MediaQuery.of(context).size.width - 48.0,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -56,9 +61,6 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
                 _displayButtonLoginPage(
                     'w Facebook', facebook_blue, _signUpFacebook),
                 _buildCustomExpanded(5),
-//            _displayButtonLoginPage('Email', givdo_orange),
-//            _buildCustomExpanded(1),
-//            _displayButtonLoginPage('Password', givdo_orange),
                 Form(
                     key: _formKey,
                     child: Column(
