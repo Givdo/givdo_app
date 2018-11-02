@@ -17,3 +17,5 @@ const givdo_blue = Color.fromRGBO(132, 218, 251, 1.0);
 const givdo_purple = Color.fromRGBO(189, 186, 246, 1.0);
 
 const givdo_grey = Color.fromRGBO(190, 182, 192, 1.0);
+
+const facebook_blue = Color.fromRGBO(59, 89, 152, 1.0);
