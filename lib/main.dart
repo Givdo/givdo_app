@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:givdo_app/login.dart';
 import 'definitions.dart';
 
 void main() {
@@ -26,10 +27,41 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   final String title;
 
   MyHomePage({Key key, @required this.title}) : super(key: key);
+
+  @override
+  MyHomePageState createState() {
+    return new MyHomePageState();
+  }
+}
+
+class MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
+  AnimationController _givdoLoginPageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _givdoLoginPageController =
+        new AnimationController(duration: Duration(seconds: 3), vsync: this)
+          ..addStatusListener((status) {
+            if (status == AnimationStatus.completed) {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => new GivdoLoginPage()));
+            }
+          });
+    _givdoLoginPageController.forward();
+  }
+
+  @override
+  void dispose() {
+    _givdoLoginPageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +90,7 @@ class MyHomePage extends StatelessWidget {
 
   Text _displayAppTitleMainPage() {
     return Text(
-      '$title',
+      '${widget.title}',
       style:
           TextStyle(fontSize: 70.0, color: givdo_orange, letterSpacing: -1.0),
     );
