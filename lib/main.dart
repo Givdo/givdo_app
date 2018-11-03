@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:givdo_app/login.dart';
 import 'package:givdo_app/logingivdologo.dart';
@@ -39,29 +41,22 @@ class MyHomePage extends StatefulWidget {
   }
 }
 
-class MyHomePageState extends State<MyHomePage>
-    with SingleTickerProviderStateMixin {
-  AnimationController _givdoLoginPageController;
-
+class MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    _givdoLoginPageController =
-        new AnimationController(duration: Duration(seconds: 3), vsync: this)
-          ..addStatusListener((status) {
-            if (status == AnimationStatus.completed) {
-              Navigator.of(context).pop();
-              Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => new GivdoLoginPage()));
-            }
-          });
-    _givdoLoginPageController.forward();
+    Timer(Duration(seconds: 3), _goToLoginPage);
   }
 
   @override
   void dispose() {
-    _givdoLoginPageController.dispose();
     super.dispose();
+  }
+
+  void _goToLoginPage() {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(new MaterialPageRoute(
+        builder: (BuildContext context) => new GivdoLoginPage()));
   }
 
   @override
@@ -74,7 +69,7 @@ class MyHomePageState extends State<MyHomePage>
             _buildCustomExpanded(3),
             _displayAppTitleMainPage(),
             _buildCustomExpanded(1),
-            DisplayGivdoLogo(logoSize: 120.0),
+            DisplayGivdoLogo(logoSize: 160.0),
             _buildCustomExpanded(6),
           ],
         ),
