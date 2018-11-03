@@ -35,9 +35,13 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _scroll = new ScrollController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -93,11 +97,13 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
                         }),
                     Text(
                       'By signing you agree to our ',
-                      style: TextStyle(color: givdo_orange),
+                      style: TextStyle(color: givdo_orange, fontSize: 10.0),
                     ),
                     Text('terms',
                         style: TextStyle(
-                            color: givdo_orange, fontWeight: FontWeight.w800)),
+                            color: givdo_orange,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 10.0)),
                   ],
                 ),
                 _buildCustomExpanded(1),
