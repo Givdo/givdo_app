@@ -25,15 +25,21 @@ class GivDoUser {
   GivDoUserState state = GivDoUserState.signed_out;
 
   set givDoUserEmail(newEmail) {
-    print('Givdo User calss:');
-    print(givDoUser);
-    print('NewEmail $newEmail');
-    if (null != newEmail) givDoUser.userEmail = newEmail;
+    if (newEmail != null)
+      try {
+        givDoUser.userEmail = newEmail;
+      } catch (e) {
+        print(e.toString());
+      }
   }
 
   set givDoUserPassword(newPassword) {
-    print('NewPassword $newPassword');
-    if (null != newPassword) givDoUser.userPassword = newPassword;
+    if (newPassword != null)
+      try {
+        givDoUser.userPassword = newPassword;
+      } catch (e) {
+        print(e.toString());
+      }
   }
 }
 
