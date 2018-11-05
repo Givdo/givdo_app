@@ -3,7 +3,10 @@ import 'package:givdo_app/definitions.dart';
 import 'package:givdo_app/logingivdobutton.dart';
 
 import 'package:givdo_app/logingivdologo.dart';
+import 'package:givdo_app/logingivdotextform.dart';
 import 'package:givdo_app/logingivdotitle.dart';
+
+import 'globals.dart' as globals;
 
 class GivdoLoginPage extends StatefulWidget {
   @override
@@ -13,17 +16,16 @@ class GivdoLoginPage extends StatefulWidget {
 class _GivdoLoginPageState extends State<GivdoLoginPage> {
   final _formKey = GlobalKey<FormState>();
   ScrollController _scroll;
-  bool _termsAndConditions = true;
-  String _userEmail;
-  String _userPassword;
+
+  _GivdoLoginPageState() {
+    globals.givDoUser = new globals
+        .GivDoUser(); // Instantiate the givdoUser instance (global) of the GivdoUSer class
+  }
 
   void _signUpGivdo() {
     var form = _formKey.currentState;
     if (form.validate()) {
       form.save();
-      print('Email: $_userEmail');
-      print('Password: $_userPassword');
-      print('Sign Up Givdo App!');
     } else
       print('Provided credentials are not valid');
   }
@@ -77,11 +79,17 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        _buildEmailTextFormField(),
+                        LoginGivdoTextForm(
+                          labelTextForm: 'Email',
+                          passwordTextForm: false,
+                        ),
                         Container(
                           height: 10.0,
                         ),
-                        _buildPasswordTextFormField(),
+                        LoginGivdoTextForm(
+                          labelTextForm: 'Password',
+                          passwordTextForm: true,
+                        ),
                       ],
                     )),
                 Row(
@@ -89,10 +97,11 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
                   children: <Widget>[
                     Checkbox(
                         activeColor: givdo_orange,
-                        value: _termsAndConditions,
+                        value: globals.termsAndConditionsAccepted,
                         onChanged: (bool value) {
                           setState(() {
-                            _termsAndConditions = !_termsAndConditions;
+                            globals.termsAndConditionsAccepted =
+                                !globals.termsAndConditionsAccepted;
                           });
                         }),
                     Text(
@@ -127,58 +136,6 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
           )
         ]),
       )),
-    );
-  }
-
-  TextFormField _buildPasswordTextFormField() {
-    return TextFormField(
-      style: TextStyle(color: givdo_orange, fontSize: 17.0),
-      initialValue: '',
-      autocorrect: false,
-      decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30.0),
-              borderSide: BorderSide(
-                color: givdo_orange,
-              )),
-          fillColor: givdo_orange,
-          labelText: 'Password',
-          labelStyle: TextStyle(color: givdo_orange, fontSize: 17.0),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30.0),
-              borderSide: BorderSide(
-                color: givdo_orange,
-              ))),
-      validator: (str) =>
-          str.length <= 7 ? 'Password must be at least 7 characters' : null,
-      onSaved: (str) => _userPassword = str,
-      obscureText: true,
-    );
-  }
-
-  TextFormField _buildEmailTextFormField() {
-    return TextFormField(
-      style: TextStyle(color: givdo_orange, fontSize: 17.0),
-      initialValue: '',
-      scrollPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-      autocorrect: false,
-      decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30.0),
-              borderSide: BorderSide(
-                color: givdo_orange,
-              )),
-          fillColor: givdo_orange,
-          labelText: 'Email',
-          labelStyle: TextStyle(color: givdo_orange, fontSize: 17.0),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30.0),
-              borderSide: BorderSide(
-                width: 20.0,
-                color: givdo_orange,
-              ))),
-      validator: (str) => !str.contains('@') ? 'Not a valid Email!' : null,
-      onSaved: (str) => _userEmail = str,
     );
   }
 }
