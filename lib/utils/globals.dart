@@ -1,6 +1,6 @@
 // Use this file to define Global variables for the App.
 
-import 'definitions.dart';
+import '../UI/definitions.dart';
 
 // Global Variables list
 bool termsAndConditionsAccepted = true;
@@ -20,9 +20,39 @@ String verifyUserPassword(String inputPassword) {
 // Class definition of the App user
 class GivDoUser {
   String userEmail;
+  String firstName;
+  String lastName;
+  String email;
   String userPassword;
   GivDoUserProfile profile = GivDoUserProfile.new_player;
   GivDoUserState state = GivDoUserState.signed_out;
+
+  set givDoUserlastName( lastName ) {
+      try {
+
+        givDoUser.lastName = lastName;
+      } catch (e) {
+        print(e.toString());
+      }
+  }
+
+  set givDoUseremail( email) {
+    try {
+      givDoUser.email = email;
+
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  set givDoUserfirstName(firstName) {
+    try {
+      givDoUser.firstName = firstName;
+
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   set givDoUserEmail(newEmail) {
     if (newEmail != null)

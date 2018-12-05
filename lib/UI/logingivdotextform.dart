@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:givdo_app/definitions.dart';
-import 'globals.dart' as globals;
+import 'definitions.dart';
+import '../utils/globals.dart' as globals;
 
 class LoginGivdoTextForm extends StatelessWidget {
   final String labelTextForm;

@@ -12,6 +12,6 @@ class DisplayGivdoLogo extends StatelessWidget {
     return Container(
         height: logoSize,
         width: logoSize,
-        child: Image.asset('images/g-orange-icon_1024px-01.png'));
+        child: Image.asset("assets/logos/g-orange-icon.png"));
   }
 }

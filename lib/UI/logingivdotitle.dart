@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:givdo_app/definitions.dart';
+import 'definitions.dart';
 
 class DisplayGivdoTitle extends StatelessWidget {
   final String title;
