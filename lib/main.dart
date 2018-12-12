@@ -31,7 +31,7 @@ Future getAuth() async {
   var token = prefs.getString('token');
   if(token != null) {
     print("TOKEN in storage $token");
-    final resp = await http.get('http://192.168.1.115:3000/auth/checklogin',headers: {'Authorization': token});
+    final resp = await http.get('http://192.168.0.136:3000/auth/checklogin',headers: {'Authorization': token});
     if(resp.body == 'Unauthorized'){
       print("Not valid token");
       return false;

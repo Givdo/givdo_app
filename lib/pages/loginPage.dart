@@ -36,42 +36,34 @@ class _GivdoLoginPageState extends State<GivdoLoginPage> {
       print('Provided credentials are not valid');
   }
 
-  void onLoginStatusChanged(bool isLoggedIn) {
-    setState(() {
-      this.isLoggedIn = isLoggedIn;
-    });
-  }
-
   void _initiateFacebookLogin() async {
     var facebookLogin = FacebookLogin();
     var facebookLoginResult = await facebookLogin.logInWithReadPermissions(['email']);
-    print(facebookLoginResult.accessToken.token);
+    print(facebookLoginResult.status);
     switch (facebookLoginResult.status) {
       case FacebookLoginStatus.error:
         print("Error");
-        onLoginStatusChanged(false);
         break;
       case FacebookLoginStatus.cancelledByUser:
         print("CancelledByUser");
-        onLoginStatusChanged(false);
         break;
       case FacebookLoginStatus.loggedIn:
         print("LoggedIn");
-        onLoginStatusChanged(true);
         var respdata = await postData({'access_token':facebookLoginResult.accessToken.token});
         if(respdata.containsKey('token')) {
           final prefs = await SharedPreferences.getInstance();
           prefs.setString('token',respdata['token']);
           print( prefs.getString('token'));
-          Navigator.of(context).pop();
-          Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=> new HomePage()));
+          new HomePage();
+          //          Navigator.of(context).pop();
+//          Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=> new HomePage()));
         };
         break;
     }
   }
 
   static Future<Map> postData(Map d) async {
-    http.Response res = await http.post('http://192.168.1.115:3000/auth/facebook/callback',body: d); // post api call
+    http.Response res = await http.post('http://192.168.0.136:3000/auth/facebook/callback',body: d); // post api call
     Map data = json.decode(res.body);
     return data;
   }
