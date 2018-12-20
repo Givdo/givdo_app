@@ -61,7 +61,7 @@ class HowItWorksPage extends StatelessWidget {
             ),
             howItWorksStep(
                 howItWorksStepNumberIcon("1", color),
-                "Challenge a friend to a game of trivia or random play",
+                "Challenge a friend to a game of trivia or select \"Random\" to have us select your opponent for you.",
                 TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w400,
@@ -69,7 +69,7 @@ class HowItWorksPage extends StatelessWidget {
                 )),
             howItWorksStep(
                 howItWorksStepNumberIcon("2", color),
-                "Win GivCoins!",
+                "Win GivCoins in your games.",
                 TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w400,
@@ -77,14 +77,14 @@ class HowItWorksPage extends StatelessWidget {
                 )),
             howItWorksStep(
                 howItWorksStepNumberIcon("3", color),
-                "Donate to a cause of your choosing.",
+                "Use those GivCoins to select items to donate to our chosen partners in our marketplace!",
                 TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w400,
                   color: color,
                 )),
             Container(
-              height: 190.0,
+              height: 100.0,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 35.0),
